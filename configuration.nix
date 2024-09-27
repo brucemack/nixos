@@ -103,13 +103,17 @@
   vscode
   verilog
   gtkwave
-  python312
+  python312Full
   git
   cmake
   gnumake
   binutils
   gcc
   gtest
+  imagemagick
+  ruby_3_3
+  ngspice
+  gdb
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -138,5 +142,11 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+
+  environment = {
+    sessionVariables = {
+      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+    };
+  };
 
 }
